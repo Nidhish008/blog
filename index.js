@@ -1,6 +1,5 @@
 require('dotenv').config();
 const cors=require("cors")
-app.use(cors())
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const mongoose = require('mongoose');
@@ -10,7 +9,7 @@ const resolvers = require('./schema/resolvers');
 
 async function startServer() {
   const app = express();
-
+  app.use(cors())
   // Connect to MongoDB
   try {
     await mongoose.connect(process.env.MONGO_URI, {
